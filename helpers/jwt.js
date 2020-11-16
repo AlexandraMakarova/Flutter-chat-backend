@@ -16,6 +16,16 @@ const generateJWT = (userId) => {
     });
 }
 
+const checkJWT = ( token = '') => {
+    try {
+        const { userId } = jwt.verify(token, process.env.JWT_KEY);
+        return [true, userId];
+    } catch (error) {
+        return [false, null];
+    }
+}
+
 module.exports = {
-    generateJWT
+    generateJWT,
+    checkJWT
 }

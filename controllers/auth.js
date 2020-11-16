@@ -2,8 +2,8 @@ const { response } = require('express');
 const bcrypt = require('bcryptjs');
 
 const { exists } = require('../models/user');
-const User  = require('../models/user');
 const { generateJWT } = require('../helpers/jwt');
+const User  = require('../models/user');
 
 
 const createUser =  async (request, response = response) => {
@@ -15,7 +15,7 @@ const createUser =  async (request, response = response) => {
         if (emailExist) {
             return response.status(400).json({
                 ok: false,
-                msg: 'No valid credential'
+                msg: 'Invalid credential'
             });
         }
 
